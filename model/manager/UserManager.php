@@ -49,21 +49,6 @@ class UserManager extends AbstractManager
     );
   }
 
-  public function findOneByPseudo($pseudo)
-  {
-    $sql = "SELECT * FROM user
-    WHERE pseudonym = :pseudo";
-
-    return self::getOneOrNullResult(
-      self::select(
-        $sql,
-        ["pseudo" => $pseudo],
-        false
-      ),
-      self::$classname
-    );
-  }
-
   public function findAll()
   {
     $sql = "SELECT * FROM user";
@@ -71,21 +56,6 @@ class UserManager extends AbstractManager
     return self::getResults(
       self::select($sql, null, true),
       self::$classname
-    );
-  }
-
-  public function addUser($pseudo, $email, $hash)
-  {
-    $sql = "INSERT INTO user (pseudonym, password, email)
-    VALUES (:username, :password, :email)";
-
-    return self::create(
-      $sql,
-      [
-        "username" => $pseudo,
-        "email" => $email,
-        "password" => $hash
-      ]
     );
   }
 }

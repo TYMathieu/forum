@@ -8,9 +8,9 @@ use App\AbstractManager;
 // propriétés et constantes de la classe parente. 
 // Temps qu'une classe n'écrase pas ces méthodes, elles conservent leur fonctionnalité d'origine.
 
-class ThemeManager extends AbstractManager
+class MessageManager extends AbstractManager
 {
-  private static $classname = "Model\Entity\Theme";
+  private static $classname = "Model\Entity\Message";
   //fully qualified classname
 
   public function __construct()
@@ -18,10 +18,9 @@ class ThemeManager extends AbstractManager
     self::connect(self::$classname);
   }
 
-  // fonction qui permet de trouver tous les themes 
   public function findAll()
   {
-    $sql = "SELECT * FROM theme";
+    $sql = "SELECT * FROM messages";
 
     return self::getResults(
       self::select($sql, null, true),
@@ -29,17 +28,17 @@ class ThemeManager extends AbstractManager
     );
   }
 
-  public function findOneById($id)
+  public function findMessagesByTopic($id)
   {
-    $sql = "SELECT * 
-    FROM theme 
-    WHERE id_theme = :id";
+    $sql = "SELECT * FROM messages
+    WHERE topic_id = :id
+    ORDER BY dateCreation DESC";
 
-    return self::getOneOrNullResult(
+    return self::getResults(
       self::select(
         $sql,
         ["id" => $id],
-        false
+        true
       ),
       self::$classname
     );

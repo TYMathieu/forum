@@ -27,10 +27,6 @@ h2 {
   text-align: center;
 }
 
-.black {
-  color: black;
-}
-
 /* Navbar */
 
 .navbar {
@@ -87,28 +83,4 @@ footer {
   border: 1px solid white;
   margin: auto;
   padding: 1.5vw;
-}
-
-/* blocks message */
-
-.block_txt {
-  width: 80%;
-  margin: auto;
-  border: 1px solid white;
-  border-top: none;
-  padding: 1em;
-}
-
-.firstpost {
-  margin: 1em 0 0;
-}
-
-/* form */
-
-textarea {
-  width: 100%;
-}
-
-form button {
-  color: black;
 }

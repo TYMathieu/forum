@@ -64,29 +64,10 @@ class TopicManager extends AbstractManager
     );
   }
 
-  public function addTopic($title, $theme, $user)
+  // code à finir
+  public function addOneTopic()
   {
-    $sql = "INSERT INTO topic (title, theme_id, user_id)
-    VALUES (:title, :theme, :user)";
-
-    return self::create(
-      $sql,
-      [
-        "title" => $title,
-        "theme" => $theme,
-        "user" => $user
-      ]
-    );
-  }
-
-  public function lastTopic()
-  {
-    $sql = "SELECT id_topic FROM topic
-    ORDER BY id_topic DESC LIMIT 1";
-
-    return self::getOneOrNullResultInt(
-      self::select($sql, null),
-      self::$classname
-    );
+    $sql = "INSERT INTO ...";
+    return self::update($sql, null);
   }
 }

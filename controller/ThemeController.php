@@ -40,24 +40,4 @@ class ThemeController
       ]
     ];
   }
-
-  public function createTheme()
-  {
-    if (!empty($_POST)) {
-      $theme = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
-      $model = new ThemeManager;
-
-      if (!$model->findOneByName($theme)) {
-        $model->addTheme($theme);
-        header("Location:index.php");
-      } else {
-        var_dump("Ce theme existe déjà");
-      }
-    }
-
-    return [
-      "view" => 'addTheme.php',
-      "data" => null
-    ];
-  }
 }

@@ -28,35 +28,17 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </ul>
-          <?php if (App\Session::getUser()) {
-          ?>
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <?= $_SESSION['user']->getPseudonym(); ?>
-              </li>
-            </ul>
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="?ctrl=security&method=logout">[Déconnexion]</a>
-              </li>
-            </ul>
-          <?php
-          } else {
-          ?>
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="?ctrl=security&method=register">S'inscrire</a>
-              </li>
-            </ul>
-            /
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="?ctrl=security&method=login">Se connecter</a>
-              </li>
-            </ul>
-          <?php
-          }
-          ?>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">S'inscrire</a>
+            </li>
+          </ul>
+          /
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="?ctrl=user&method=login">Se connecter</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

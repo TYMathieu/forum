@@ -7,7 +7,7 @@ use App\AbstractEntity;
 class Theme extends AbstractEntity
 {
   private $id;
-  private $nom;
+  private $title;
   private $imgPath;
 
   public function __construct($data)
@@ -36,6 +36,26 @@ class Theme extends AbstractEntity
   }
 
   /**
+   * Get the value of title
+   */
+  public function getTitle()
+  {
+    return $this->title;
+  }
+
+  /**
+   * Set the value of title
+   *
+   * @return  self
+   */
+  public function setTitle($title)
+  {
+    $this->title = $title;
+
+    return $this;
+  }
+
+  /**
    * Get the value of imgPath
    */
   public function getImgPath()
@@ -51,26 +71,6 @@ class Theme extends AbstractEntity
   public function setImgPath($imgPath)
   {
     $this->imgPath = $imgPath;
-
-    return $this;
-  }
-
-  /**
-   * Get the value of nom
-   */
-  public function getNom()
-  {
-    return $this->nom;
-  }
-
-  /**
-   * Set the value of nom
-   *
-   * @return  self
-   */
-  public function setNom($nom)
-  {
-    $this->nom = $nom;
 
     return $this;
   }

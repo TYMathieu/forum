@@ -1,27 +1,34 @@
 <?php
-$theme = $data['theme'];
+$category = $data['category'];
 ?>
 
-<div id="wrapper">
-  <div class="block">
-    <h2 class="center"><?= $data['theme']->getNom() ?></h2>
+<div class="listContainer">
+
+  <!-- category Title -->
+  <h2 class="title"> category :
+    <?php echo "<span style ='color:rgb(248, 156, 139);'>" . $category->getNom() . "</span>"; ?>
+  </h2>
+
+  <!-- Topics -->
+  <div class="list">
+    <ul class="list-unstyled">
+
+      <?php foreach ($data['topics'] as $topic) { ?>
+
+        <li>
+          <a class="topicsTitles" href="?ctrl=topic&method=listMessagesByTopic&id=<?= $topic->getId(); ?>" style="color: white;">
+            <?= $topic->getTitle(); ?>
+          </a>
+          Posted by <?= $topic->getUser()->getPseudonym(); ?>.
+          On <?= $topic->getDateCreation(); ?>
+        </li>
+        <li><br></li>
+
+      <?php } ?>
+      <!-- <button type="button" class="myButton"> -->
+      <!-- finir le code pour cette fonctionnalité dans TopicController -->
+      <!-- <a href="?ctrl=topic&method=addNewTopic" class="nounderline" style="color: white;">New Topic</a> -->
+      <!-- </button> -->
+    </ul>
   </div>
-  <br>
-  <!-- Affichage des différentes catégories -->
-  <?php foreach ($data['topics'] as $topic) { ?>
-    <div class="block">
-      <a href="?ctrl=topic&method=listPostsByTopic&id=<?= $topic->getId(); ?>">
-        <h2> <?= $topic->getTitle() ?></h2>
-      </a>
-    </div>
-  <?php
-  } ?>
-
-  <?php if (App\Session::getUser()) {
-  ?>
-    <a href="?ctrl=topic&method=addTopic&id=<?= $data['theme']->getId() ?>"><button class="black">Créer un topic</button></a>
-
-  <?php
-  }
-  ?>
 </div>
